@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio Harvesting - Organic Store & Plant Disease Detector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1>Bio Harvesting</h1>
+            <p>Your Organic Solution</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#shop">Online Store</a></li>
+                <li><a href="#disease-detector">Plant Disease Detector</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h2>Welcome to Bio Harvesting</h2>
+        <p>Bringing you the best organic products and plant care solutions to help you thrive sustainably.</p>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+        <h2>About Us</h2>
+        <p>At Bio Harvesting, we believe in promoting eco-friendly farming and providing quality organic products. We offer a wide range of organic fertilizers, pest control solutions, and much more to help you maintain healthy plants and sustainable agricultural practices.</p>
+        <p>Our mission is to empower farmers, gardeners, and plant enthusiasts to grow their plants naturally, without the use of harmful chemicals. Join us in the journey towards a greener and healthier planet.</p>
+    </section>
+
+    <!-- Online Store Section -->
+    <section id="shop" class="shop">
+        <h2>Our Organic Products</h2>
+        <div class="products">
+            <div class="product-item">
+                <img src="OrganicProduct1.png" alt="Organic Fertilizer" class="product-img">
+                <h3>Organic Fertilizer</h3>
+                <p>Price: $15.99</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="Organic2.png" alt="Natural Pesticides" class="product-img">
+                <h3>Natural Pesticides</h3>
+                <p>Price: $10.99</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product-item">
+                <img src="Organic3.png" alt="Soil Enhancer" class="product-img">
+                <h3>Soil Enhancer</h3>
+                <p>Price: $12.99</p>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plant Disease Detector Section -->
+    <section id="disease-detector" class="disease-detector">
+        <h2>Plant Disease Detector</h2>
+        <p>Upload an image of your plant to detect any diseases and get treatment suggestions.</p> 
+        <p>Our advanced plant disease detection system uses AI to provide accurate results and help you save your plants!</p>
+        <input type="file" id="plant-image">
+        <button onclick="detectDisease()">Detect Disease</button>
+        <div id="disease-result"></div>
+    </section>
+<!-- Contact Us Section -->
+<section id="contact" class="contact">
+    <h2>Contact Us</h2>
+
+    <!-- Container to hold the Contact Card and Form -->
+    <div class="contact-container">
+        <!-- Contact Info Card with Emojis (Left side) -->
+        <div class="contact-card">
+            <h3>Chandini 🧑‍💼</h3>
+            <div class="contact-info">
+                <p><span role="img" aria-label="location">📍</span> Location: Naidupet, Nellore, Andhra Pradesh</p>
+                <p><span role="img" aria-label="email">📧</span> Email: <a href="mailto:midathachandini@gmail.com">midathachandini@gmail.com</a></p>
+                <p><span role="img" aria-label="phone">📞</span> Contact: <a href="tel:+918096565410">8096565410</a></p>
+            </div>
+        </div>
+
+        <!-- Contact Form (Right side) -->
+        <form id="contact-form">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</section>
+
+
+
+
+    <!-- AI Chatbot Section 
+    <section id="chatbot">
+        <div id="chatbox">
+            <p>Hi, I'm your assistant! How can I help you today?</p>
+        </div>
+        <input type="text" id="chat-input" placeholder="Ask a question..." onkeydown="if(event.key === 'Enter'){sendChatMessage()}">
+        <button onclick="sendChatMessage()">Send</button>
+        <button onclick="startVoiceRecognition()">Talk</button>
+        <script src="app.js"></script>
+    </section>-->
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Bio Harvesting. All Rights Reserved. | Designed by Chandini</p>
+    </footer>
+
+    
+</body>
+</html>

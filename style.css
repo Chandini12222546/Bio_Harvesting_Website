@@ -1,0 +1,355 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Layout */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 50px 0;
+    background-color: #87b13d;
+    color: white;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+}
+
+/* About Section */
+.about {
+    padding: 2rem;
+    background-color: #eef0d5;
+    text-align: center;
+}
+
+.about h2 {
+    margin-bottom: 20px;
+}
+
+.about p {
+    margin-bottom: 10px;
+}
+
+/* Shop Section */
+.shop {
+    padding: 2rem;
+    background-color: white;
+    text-align: center;
+}
+
+.shop h2 {
+    margin-bottom: 20px;
+}
+
+.products {
+    display: flex;
+    justify-content: space-around;
+}
+
+.product-item {
+    text-align: center;
+    padding: 1rem;
+    background-color: #eef0d5;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-item:hover {
+    transform: scale(1.1);
+}
+
+.product-item img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+button {
+    background-color: #5c9e2f;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4a7c1a;
+}
+
+/* Disease Detector Section */
+.disease-detector {
+    padding: 2rem;
+    background-color: #fff;
+    text-align: center;
+}
+
+.disease-detector input {
+    padding: 0.5rem;
+    margin: 10px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Contact Section */
+/* Contact Us Section */
+#contact {
+    padding: 40px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* Contact Info Card */
+.contact-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contact-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    font-size: 16px;
+    margin: 8px 0;
+}
+
+.contact-card a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-card a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Form */
+/* General Layout */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Contact Us Section */
+#contact {
+    padding: 50px;
+    background-color: #f3f4f7;
+    text-align: center;
+}
+
+/* Heading Styling */
+h2 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+/* Contact Container (Flexbox for card and form alignment) */
+.contact-container {
+    display: flex;
+    justify-content: space-between;  /* Space between card and form */
+    align-items: flex-start;  /* Align items to the top */
+    gap: 50px; /* Space between contact card and form */
+}
+
+/* Contact Info Card with White Background and Dark Green Text */
+.contact-card {
+    background-color: #fff; /* White background */
+    color: #006400; /* Dark green text */
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 350px;
+    width: 100%;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: scale(1.05);
+}
+
+.contact-card h3 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #006400;
+    font-weight: bold;
+}
+
+.contact-info {
+    background-color: #e7f7e5; /* Light green background for the info box */
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.contact-info p {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #006400;
+}
+
+.contact-info a {
+    color: #006400;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #004d00; /* Darker green on hover */
+}
+
+.contact-info span {
+    font-size: 20px; /* Slightly larger emoji */
+    margin-right: 10px;
+}
+
+/* Contact Form (Right side) */
+#contact-form {
+    background-color: #fff; /* White background for the form */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    flex-grow: 1;
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    transition: border 0.3s ease;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    border-color: #006400; /* Dark green border on focus */
+}
+
+#contact-form button {
+    background-color: #006400; /* Dark green button */
+    color: white;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+#contact-form button:hover {
+    background-color: #004d00; /* Darker green on hover */
+}
+
+/* Adding FontAwesome Icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+
+
+/* Chatbot Section */
+#chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+#chatbox {
+    height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+}
+
+#chat-input {
+    width: 70%;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px;
+    background-color: #5c9e2f;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4a7c1a;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #333;
+    color: white;
+    margin-top: 20px;
+}
