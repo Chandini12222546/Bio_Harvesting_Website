@@ -1,10 +1,9 @@
-pipeline { 
+pipeline {
     agent any
 
     stages {
         stage('Clone Repository') {
             steps {
-                 
                 git 'https://github.com/Chandini12222546/Bio_Harvesting_Website.git'
             }
         }
@@ -27,23 +26,20 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Start Local Server') {
             steps {
-                echo 'Deploying website...'
-
-                 withCredentials([usernamePassword(credentialsId: 'ftp-credentials-id', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
-                    sh """
-                        lftp -c "open -u $USER,$PASS ftp://your-ftp-host.com && mirror -R ./ /public_html/"
-                    """
-                }
-
-             }
+                echo 'Starting local server...'
+                sh """
+                    cd Bio_Harvesting_Website
+                    python3 -m http.server 8000
+                """
+            }
         }
     }
 
     post {
         success {
-            echo 'Deployment Successful!'
+            echo 'Website deployed successfully on http://localhost:8000/'
         }
         failure {
             echo 'Deployment Failed.'
