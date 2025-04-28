@@ -1,4 +1,4 @@
-pipeline {//Hi
+pipeline {
     agent any
 
     stages {
@@ -22,26 +22,23 @@ pipeline {//Hi
 
         stage('Test') {
             steps {
-                echo 'Optional: Add HTML/CSS/JS validation tools if needed'
+                echo 'Optional: Add HTML/CSS validation tools if needed'
             }
         }
 
-        stage('Start Local Server') {
+        stage('Deploy') {
             steps {
-                echo 'Starting local server...'
-                sh """
-                    start "" "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe" http://localhost:8000
-                """
+                echo 'Website is ready. You can manually deploy to server or hosting platform.'
             }
         }
     }
 
     post {
         success {
-            echo 'Website deployed successfully on http://localhost:8000/'
+            echo 'Pipeline completed successfully.'
         }
         failure {
-            echo 'Deployment Failed.'
+            echo 'Pipeline failed.'
         }
     }
 }
