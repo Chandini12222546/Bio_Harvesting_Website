@@ -1,22 +1,22 @@
-pipeline {
+pipeline { 
     agent any
 
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/Chandini12222546/Bio_Harvesting_Website.git'
+                git branch: 'main', url: 'https://github.com/Chandini12222546/Bio_Harvesting_Website.git'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                echo 'No dependencies for HTML/CSS/JS'
+                echo 'No dependencies for HTML/CSS'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'No build step needed for plain HTML/CSS/JS'
+                echo 'No build step needed for plain HTML/CSS'
             }
         }
 
@@ -28,17 +28,17 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'Website is ready. You can manually deploy to server or hosting platform.'
+                echo 'Website code cloned successfully.'
             }
         }
     }
 
     post {
         success {
-            echo 'Pipeline completed successfully.'
+            echo 'Website deployed successfully from GitHub!'
         }
         failure {
-            echo 'Pipeline failed.'
+            echo 'Deployment Failed.'
         }
     }
 }
