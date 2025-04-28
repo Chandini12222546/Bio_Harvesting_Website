@@ -1,4 +1,4 @@
-pipeline { 
+pipeline {
     agent any
 
     stages {
@@ -10,19 +10,19 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                echo 'No dependencies for HTML/CSS'
+                echo 'No dependencies for HTML/CSS/JS'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'No build step needed for plain HTML/CSS'
+                echo 'No build step needed for plain HTML/CSS/JS'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Optional: Add HTML/CSS validation tools if needed'
+                echo 'Optional: Add HTML/CSS/JS validation tools if needed'
             }
         }
 
@@ -30,8 +30,7 @@ pipeline {
             steps {
                 echo 'Starting local server...'
                 sh """
-                    cd Bio_Harvesting_Website
-                    python3 -m http.server 8000
+                    start "" "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe" http://localhost:8000
                 """
             }
         }
