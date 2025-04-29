@@ -25,6 +25,12 @@ pipeline {
                 echo 'Optional: Add HTML/CSS validation tools if needed'
             }
         }
+        stage('Deploy') {
+            steps {
+                echo 'Website code cloned successfully.'
+            }
+        }
+    }
 
         
 
