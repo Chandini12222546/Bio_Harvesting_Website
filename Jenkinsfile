@@ -26,12 +26,7 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                echo 'Website code cloned successfully.'
-            }
-        }
-    }
+        
 
     post {
         success {
