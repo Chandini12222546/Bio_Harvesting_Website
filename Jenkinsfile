@@ -8,7 +8,7 @@ pipeline {
     }
 
     stages {
-        stage('Clone Repository') {
+        stage('Clone Repo') {
             steps {
                 git 'https://github.com/chandini12222546/Bio_Harvesting_Website.git'
             }
@@ -16,39 +16,29 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                script {
-                    sh "docker build -t ${IMAGE_NAME} ."
-                }
+                sh 'docker build -t chandini2326/bio-harvesting .'
             }
         }
 
-        stage('Stop and Remove Existing Container') {
+        stage('Remove Old Container') {
             steps {
-                script {
-                    def isRunning = sh(script: "docker ps -q -f name=${CONTAINER_NAME}", returnStdout: true).trim()
-                    if (isRunning) {
-                        sh "docker stop ${CONTAINER_NAME}"
-                        sh "docker rm ${CONTAINER_NAME}"
-                    }
-                }
+                sh '''
+                    docker stop bioharvest-container || true
+                    docker rm bioharvest-container || true
+                '''
             }
         }
 
-        stage('Run New Docker Container') {
+        stage('Run New Container') {
             steps {
-                script {
-                    sh "docker run -d -p ${PORT}:80 --name ${CONTAINER_NAME} ${IMAGE_NAME}"
-                }
+                sh 'docker run -d -p 8083:80 --name bioharvest-container chandini2326/bio-harvesting'
             }
         }
     }
 
     post {
         success {
-            echo "✅ Deployment successful! Visit: http://localhost:${PORT} or your Ngrok link"
-        }
-        failure {
-            echo "❌ Deployment failed. Check console for errors."
+            echo "🚀 Website deployed at: http://localhost:8083"
         }
     }
 }
