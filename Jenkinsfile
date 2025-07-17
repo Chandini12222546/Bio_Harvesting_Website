@@ -1,45 +1,37 @@
-pipeline { 
+pipeline {
     agent any
 
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/Chandini12222546/Bio_Harvesting_Website.git'
+                git 'https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git'
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Build Docker Image') {
             steps {
-                echo 'No dependencies for HTML/CSS'
+                script {
+                    dockerImage = docker.build("chandini2326/bio-harvesting")
+                }
             }
         }
 
-        stage('Build') {
+        stage('Stop Existing Container') {
             steps {
-                echo 'No build step needed for plain HTML/CSS'
+                sh '''
+                    if [ $(docker ps -q --filter name=bioharvest-container) ]; then
+                        docker stop bioharvest-container
+                        docker rm bioharvest-container
+                    fi
+                '''
             }
         }
 
-        stage('Test') {
+        stage('Run Docker Container on Port 8083') {
             steps {
-                echo 'Optional: Add HTML/CSS validation tools if needed'
+                sh 'docker run -d -p 8083:80 --name bioharvest-container chandini2326/bio-harvesting'
             }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Website code cloned successfully.'
-            }
-        }
-    }
-
-        
-
-    post {
-        success {
-            echo 'Website deployed successfully from GitHub!'
-        }
-        failure {
-            echo 'Deployment Failed.'
         }
     }
 }
+
