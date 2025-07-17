@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git'
+                git 'https://github.com/chandini12222546/Bio_Harvesting_Website.git'
             }
         }
 
@@ -34,4 +34,3 @@ pipeline {
         }
     }
 }
-
