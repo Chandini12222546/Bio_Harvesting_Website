@@ -1,36 +1,45 @@
 pipeline {
     agent any
 
+    environment {
+        IMAGE_NAME = 'chandini2326/bio-harvesting'
+        CONTAINER_NAME = 'bioharvest-container'
+        PORT = '8083'
+    }
+
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/chandini12222546/Bio_Harvesting_Website.git'
+                echo '📥 Cloning GitHub repository...'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                script {
-                    dockerImage = docker.build("chandini2326/bio-harvesting")
-                }
+                echo "🐳 Simulating Docker build: ${IMAGE_NAME}"
             }
         }
 
-        stage('Stop & Remove Existing Container') {
+        stage('Stop and Remove Existing Container') {
             steps {
-                sh '''
-                    if [ $(docker ps -q --filter name=bioharvest-container) ]; then
-                        docker stop bioharvest-container
-                        docker rm bioharvest-container
-                    fi
-                '''
+                echo "🛑 Simulating stop and remove of Docker container: ${CONTAINER_NAME}"
             }
         }
 
-        stage('Run Docker Container') {
+        stage('Run New Docker Container') {
             steps {
-                sh 'docker run -d -p 8083:80 --name bioharvest-container chandini2326/bio-harvesting'
+                echo "🚀 Simulating Docker run on port ${PORT} with image: ${IMAGE_NAME}"
             }
+        }
+    }
+
+    post {
+        success {
+            echo "✅ Simulated deployment successful!"
+            echo "🌐 Access would be at: http://localhost:${PORT} or Ngrok link"
+        }
+        failure {
+            echo "❌ Simulated deployment failed. Please check the pipeline logs."
         }
     }
 }
