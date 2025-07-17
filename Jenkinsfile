@@ -10,36 +10,45 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                echo '📥 Cloning GitHub repository...'
+                git 'https://github.com/chandini12222546/Bio_Harvesting_Website.git'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                echo "🐳 Simulating Docker build: ${IMAGE_NAME}"
+                script {
+                    sh "docker build -t ${IMAGE_NAME} ."
+                }
             }
         }
 
         stage('Stop and Remove Existing Container') {
             steps {
-                echo "🛑 Simulating stop and remove of Docker container: ${CONTAINER_NAME}"
+                script {
+                    def isRunning = sh(script: "docker ps -q -f name=${CONTAINER_NAME}", returnStdout: true).trim()
+                    if (isRunning) {
+                        sh "docker stop ${CONTAINER_NAME}"
+                        sh "docker rm ${CONTAINER_NAME}"
+                    }
+                }
             }
         }
 
         stage('Run New Docker Container') {
             steps {
-                echo "🚀 Simulating Docker run on port ${PORT} with image: ${IMAGE_NAME}"
+                script {
+                    sh "docker run -d -p ${PORT}:80 --name ${CONTAINER_NAME} ${IMAGE_NAME}"
+                }
             }
         }
     }
 
     post {
         success {
-            echo "✅ Simulated deployment successful!"
-            echo "🌐 Access would be at: http://localhost:${PORT} or Ngrok link"
+            echo "✅ Deployment successful! Visit: http://localhost:${PORT} or your Ngrok link"
         }
         failure {
-            echo "❌ Simulated deployment failed. Please check the pipeline logs."
+            echo "❌ Deployment failed. Check console for errors."
         }
     }
 }
