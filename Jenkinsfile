@@ -10,7 +10,9 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t chandini2326/bio-harvesting .'
+                script {
+                    def customImage = docker.build("chandini2326/bio-harvesting")
+                }
             }
         }
 
