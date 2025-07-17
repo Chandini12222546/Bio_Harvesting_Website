@@ -11,6 +11,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
+                    // Build Docker image from the root directory (make sure Dockerfile exists)
                     def customImage = docker.build("chandini2326/bio-harvesting")
                 }
             }
@@ -18,12 +19,16 @@ pipeline {
 
         stage('Stop & Remove Existing Container') {
             steps {
-                sh '''
-                    if [ $(docker ps -q --filter name=bioharvest-container) ]; then
-                        docker stop bioharvest-container
-                        docker rm bioharvest-container
-                    fi
-                '''
+                script {
+                    // Safely stop and remove container if it exists
+                    def containerId = sh(script: "docker ps -q --filter name=bioharvest-container", returnStdout: true).trim()
+                    if (containerId) {
+                        sh "docker stop bioharvest-container"
+                        sh "docker rm bioharvest-container"
+                    } else {
+                        echo "No container named bioharvest-container running"
+                    }
+                }
             }
         }
 
