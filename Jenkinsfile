@@ -8,37 +8,38 @@ pipeline {
     }
 
     stages {
-        stage('Clone Repo') {
+        stage('Clone Repository') {
             steps {
-                git 'https://github.com/chandini12222546/Bio_Harvesting_Website.git'
+                echo '📥 Cloning GitHub repository...'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t chandini2326/bio-harvesting .'
+                echo "🐳 Simulating Docker build: ${IMAGE_NAME}"
             }
         }
 
-        stage('Remove Old Container') {
+        stage('Stop and Remove Existing Container') {
             steps {
-                sh '''
-                    docker stop bioharvest-container || true
-                    docker rm bioharvest-container || true
-                '''
+                echo "🛑 Simulating stop and remove of Docker container: ${CONTAINER_NAME}"
             }
         }
 
-        stage('Run New Container') {
+        stage('Run New Docker Container') {
             steps {
-                sh 'docker run -d -p 8083:80 --name bioharvest-container chandini2326/bio-harvesting'
+                echo "🚀 Simulating Docker run on port ${PORT} with image: ${IMAGE_NAME}"
             }
         }
     }
 
     post {
         success {
-            echo "🚀 Website deployed at: http://localhost:8083"
+            echo "✅ Simulated deployment successful!"
+            echo "🌐 Access would be at: http://localhost:${PORT} or Ngrok link"
+        }
+        failure {
+            echo "❌ Simulated deployment failed. Please check the pipeline logs."
         }
     }
 }
