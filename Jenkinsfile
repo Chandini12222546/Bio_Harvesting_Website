@@ -1,15 +1,10 @@
 pipeline {
     agent any
 
-    options {
-        // Keep this build forever
-        keepBuilds(1)
-    }
-
     stages {
         stage('Clone Repository') {
             steps {
-                echo 'Cloning the repository...'
+                // Checkout your GitHub repo
                 git 'https://github.com/chandini12222546/Bio_Harvesting_Website.git'
             }
         }
@@ -17,17 +12,17 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    echo 'Building Docker image chandini2326/bio-harvesting...'
-                    def customImage = docker.build("chandini2326/bio-harvesting")
+                    // Build Docker image with tag
+                    docker.build('chandini2326/bio-harvesting')
                 }
             }
         }
 
         stage('Stop & Remove Existing Container') {
             steps {
-                echo 'Stopping and removing existing Docker container if any...'
+                // Stop and remove the container if it exists
                 sh '''
-                    if [ $(docker ps -q --filter name=bioharvest-container) ]; then
+                    if [ $(docker ps -q -f name=bioharvest-container) ]; then
                         docker stop bioharvest-container
                         docker rm bioharvest-container
                     fi
@@ -37,7 +32,7 @@ pipeline {
 
         stage('Run Docker Container') {
             steps {
-                echo 'Running Docker container...'
+                // Run the container on port 8083 mapped to container's port 80
                 sh 'docker run -d -p 8083:80 --name bioharvest-container chandini2326/bio-harvesting'
             }
         }
